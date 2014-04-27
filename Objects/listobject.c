@@ -356,7 +356,9 @@ list_print(PyListObject *op, FILE *fp, int flags)
     Py_END_ALLOW_THREADS
     Py_ReprLeave((PyObject *)op);
 
+#ifdef _DEBUG
 	printf("\nallocated=%d, ob_size=%d\n", op->allocated, op->ob_size);
+#endif
 
     return 0;
 }

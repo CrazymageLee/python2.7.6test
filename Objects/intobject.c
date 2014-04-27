@@ -444,21 +444,24 @@ static int refcounts[10];
 
 /* ARGSUSED */
 static int
-int_print(PyIntObject *v, FILE *fp, int flags)
-     /* flags -- not used but required by interface */
+	int_print(PyIntObject *v, FILE *fp, int flags)
+	/* flags -- not used but required by interface */
 {
+#ifdef _DEBUG
 	PyIntObject *intObjectPtr;
 	PyIntBlock *p = block_list;
 	PyIntBlock *last = NULL;
 	int count = 0;
 	int i;
+#endif
 
 	//origin
     long int_val = v->ob_ival;
     Py_BEGIN_ALLOW_THREADS
     fprintf(fp, "%ld", int_val);
     Py_END_ALLOW_THREADS
-    
+
+#ifdef _DEBUG
     printf("\n"); 
 	while (p != NULL)
 	{
@@ -492,7 +495,7 @@ int_print(PyIntObject *v, FILE *fp, int flags)
 
 	printf(" block_list count : %d\n", count);
 	printf(" free_list : %p\n", free_list);
-
+#endif
 	return 0;
 }
 
