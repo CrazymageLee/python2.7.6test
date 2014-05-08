@@ -1,0 +1,9 @@
+*.pdb
+*.obj
+*.dll
+*.exe
+*.pyc
+*.tmp
+Win32-temp-Release/
+Win32-temp-Debug/
+*.o
